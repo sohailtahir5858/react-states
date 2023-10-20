@@ -5,11 +5,20 @@ export default class Counter extends Component {
     counter: 0,
   };
 
+  handleIncrement = (params) => {
+    this.setState({ counter: this.state.counter + 1 });
+  };
+
   render() {
     return (
       <>
         <span className={this.getBadgeClasses()}>{this.formatText()} </span>
-        <button className="btn btn-secondary btn-sm">Increment</button>
+        <button
+          className="btn btn-secondary btn-sm"
+          onClick={() => {this.handleIncrement({id: 1})}}
+        >
+          Increment
+        </button>
       </>
     );
   }
