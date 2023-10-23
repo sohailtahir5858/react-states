@@ -1,9 +1,9 @@
-import Table from "./components/Table";
+import Movies from "./components/Movies";
 import React, { useState, useEffect } from 'react'
 import { getMovies } from "./services/fakeMovieService";
 function App() {
   const [totalCount, setTotalCount] = useState(0)
-  const [movies, setMovies] = useState([])
+  const [movies, setMovies] = useState(getMovies())
 
   useEffect(() => {
     setMovies(getMovies())
@@ -18,7 +18,8 @@ function App() {
   return (
     <main className="container">
       <h3 className="mt-5">{totalCount > 0 ? ('Table contains ' + totalCount + ' in list') : ('Table has no data')} </h3>
-      <Table movies={movies} deleteMovie={deleteMovie} />
+      {/* <Table movies={movies} deleteMovie={deleteMovie} /> */}
+      <Movies movies={movies} setTotalCount={setTotalCount}/>
     </main>
   );
 }
